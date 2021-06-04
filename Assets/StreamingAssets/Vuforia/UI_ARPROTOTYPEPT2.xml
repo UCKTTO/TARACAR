@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="Mirador" size="30.000000 24.900000" />
+    <ImageTarget name="mtesbo5" size="30.000000 24.900000" />
+    <ImageTarget name="esbo" size="30.000000 22.500000" />
+    <ImageTarget name="mt_kalugong" size="30.000000 15.240000" />
+    <ImageTarget name="MT-POKKONG2" size="30.000000 19.950001" />
+    <ImageTarget name="mt_pokkong" size="30.000000 12.101227" />
+    <ImageTarget name="bayokbok_falls" size="30.000000 22.500000" />
+    <ImageTarget name="chinese_temple" size="30.000000 22.500000" />
+    <ImageTarget name="mt_esbo" size="30.000000 19.863281" />
+    <ImageTarget name="Binga_Dam" size="30.000000 22.500000" />
+    <ImageTarget name="Mt_pigingan" size="30.000000 16.872726" />
+    <ImageTarget name="bridalfalls" size="30.000000 22.500000" />
+    <ImageTarget name="diplomat" size="30.000000 22.500000" />
+    <ImageTarget name="Mt_kalugong_eco_ark" size="30.000000 22.500000" />
+    <ImageTarget name="Hydro_falls" size="30.000000 40.000000" />
+    <ImageTarget name="photo6jpg" size="30.000000 40.000000" />
+    <ImageTarget name="stonechurch" size="30.000000 19.777071" />
+    <ImageTarget name="front" size="30.000000 33.592815" />
+  </Tracking>
+</QCARConfig>

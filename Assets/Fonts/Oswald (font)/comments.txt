@@ -1,0 +1,18 @@
+Functional issues with the TARACAR app:
+- no prompt in how long or what characters are needed for the password in the register portion
+- constant log in to the app makes the application difficult to access (actually, there's no point to having a log in page since there are no sensitive information saved inside the application)
+- email text field does not allow auto-fill from phones (might need to adjust the type of text field)
+- slow login speed
+- AR is glitchy and does not recognize other pictures of landmarks (it only responds to one dominican photo but not others)
+- BLISTT Map has very low resolution (consider the application of a Google Maps API limited to only the BLISTT area, with markers indicating where other landmarks are)
+- clicking on markers on the landmarks does not show the entire landmark name and description (text is cropped)
+- app should not automatically close
+
+UI issues:
+- change logo, fonts and color scheme!
+- **there should be no animation on the home screen
+- remove the gradients ples
+- the tree arrows are disgusting
+
+other suggestions:
+- in the explore section from the homepage, merge all information of overview and geographic sections but categorize into each city (BLISTT)
