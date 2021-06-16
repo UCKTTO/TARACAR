@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -11,7 +9,7 @@ public class PalyFabManager : MonoBehaviour
 {
     public static PalyFabManager Instance;
 
-    public Text messageText;
+    public TextMeshProUGUI txtToast;
 
     public TextMeshProUGUI h1, h2, txtMainButton, t1, t2;
     public TMP_InputField emailInput;
@@ -20,11 +18,16 @@ public class PalyFabManager : MonoBehaviour
     public GameObject btnForgotPassword;
 
     public bool isRegistering;
+    public Color32 cRed, cBrightLime;
 
     private void Awake() {
         if (Instance == null) {
             Instance = this;
         }
+    }
+
+    private void Start() {
+        GlobalData.userID = "";
     }
 
     public void Register() {
@@ -63,51 +66,111 @@ public class PalyFabManager : MonoBehaviour
         passwordInput.ActivateInputField();
     }
 
-    public void RegisterButton()
+    public void MainButton()
     {
-        var request = new RegisterPlayFabUserRequest
-        {
-            Email = emailInput.text,
-            Password = passwordInput.text,
-            RequireBothUsernameAndEmail = false
-        };
-        PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
+        if (!isRegistering) {
+            var request = new LoginWithEmailAddressRequest
+            {
+                Email = emailInput.text,
+                Password = passwordInput.text
+            };
+            PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFail);
+            txtToast.text = "Logging in...";
+            txtToast.color = cBrightLime;
+        }
+        else {
+            var request = new RegisterPlayFabUserRequest
+            {
+                Email = emailInput.text,
+                Password = passwordInput.text,
+                RequireBothUsernameAndEmail = false
+            };
+            PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnRegisterFail);
+            txtToast.text = "Registering...";
+            txtToast.color = cBrightLime;
+        }
     }
+
+    public void ResetPassword() {
+        var request = new SendAccountRecoveryEmailRequest {
+            Email = emailInput.text,
+            TitleId = "75F36"
+        };
+        PlayFabClientAPI.SendAccountRecoveryEmail(request, OnPasswordResetSuccess, OnPasswordResetFail);
+    }
+
+    void OnPasswordResetSuccess(SendAccountRecoveryEmailResult result) {
+        txtToast.text = "Password reset mail sent!";
+        txtToast.color = cBrightLime;
+    }
+    void OnPasswordResetFail(PlayFabError error) {
+        txtToast.text = "Password reset error.";
+        txtToast.color = cRed;
+        if (error.ErrorDetails != null) {
+            foreach(KeyValuePair<string,List<string>> errorDetail in error.ErrorDetails)
+            {
+                txtToast.text = errorDetail.Value[0];
+                break;
+            }
+        }
+    }
+
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        messageText.text = "Account Registered!";
+        txtToast.text = "Registration successful!";
+        txtToast.color = cBrightLime;
     }
-
-    public void LoginButton()
+    void OnRegisterFail(PlayFabError error)
     {
-        var request = new LoginWithEmailAddressRequest
-        {
-            Email = emailInput.text,
-            Password = passwordInput.text
-        };
-        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
-    }
-
-    void Login()
-    {
-        var request = new LoginWithCustomIDRequest
-        {
-            CustomId = SystemInfo.deviceUniqueIdentifier,
-            CreateAccount = true
-        };
-        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnError);
+        txtToast.text = "Registration error.";
+        txtToast.color = cRed;
+        if (error.ErrorDetails != null) {
+            foreach(KeyValuePair<string,List<string>> errorDetail in error.ErrorDetails)
+            {
+                txtToast.text = errorDetail.Value[0];
+                break;
+            }
+        }
+        // Debug.Log(error.GenerateErrorReport());
     }
 
     void OnLoginSuccess(LoginResult result)
     {
-        messageText.text = "Logged in";
+        txtToast.text = "Log in successful!";
+        txtToast.color = cBrightLime;
         SceneManager.LoadScene("MainMenu");
-        //Debug.Log("Successful login/account create!");
+        GlobalData.userID = emailInput.text;
+        GetUserAdminStatus();
     }
-    void OnError(PlayFabError error)
+    void OnLoginFail(PlayFabError error)
     {
-        Debug.Log("Error while logging in/ creating account");
-        Debug.Log(error.GenerateErrorReport());
+        txtToast.text = "Error logging in.";
+        txtToast.color = cRed;
+        if (error.ErrorDetails != null) {
+            foreach(KeyValuePair<string,List<string>> errorDetail in error.ErrorDetails)
+            {
+                txtToast.text = errorDetail.Value[0];
+                break;
+            }
+        }
+        // Debug.Log(error.GenerateErrorReport());
     }
-   
+
+    private void GetUserAdminStatus() {
+        PlayFab.ClientModels.GetUserDataRequest request = new PlayFab.ClientModels.GetUserDataRequest();
+        request.Keys = new List<string>();
+        request.Keys.Add("isAdmin");
+        PlayFabClientAPI.GetUserReadOnlyData(request, OnGUASSuccess, OnGUASFail);
+    }
+
+    private void OnGUASSuccess(PlayFab.ClientModels.GetUserDataResult result) {
+        PlayFab.ClientModels.UserDataRecord dataRecord;
+        result.Data.TryGetValue("isAdmin", out dataRecord);
+        if (dataRecord != null) {
+            GlobalData.isAdmin = dataRecord.Value == "true";
+        }
+    }
+    private void OnGUASFail(PlayFabError error) {
+        // Debug.Log(error.GenerateErrorReport());
+    }
 }

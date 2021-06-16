@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "944323572407",
+    "firebase_url": "https://taracar-7b824-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "taracar-7b824",
+    "storage_bucket": "taracar-7b824.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944323572407:android:e764cf91c858bf6b681332",
+        "android_client_info": {
+          "package_name": "com.taracarCompany.TaraCar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944323572407-584o8ogpc7bfuce811jp4br7j7dbh9sq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taracarCompany.TaraCar",
+            "certificate_hash": "4b66358003df715304657f6070d6049e94bf7922"
+          }
+        },
+        {
+          "client_id": "944323572407-uc2e4fvle8cednjii6bn5av06bttihe0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAn_zzUGCqpydLWCwi0jEAuaWMbpcR5Kxs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944323572407-uc2e4fvle8cednjii6bn5av06bttihe0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
