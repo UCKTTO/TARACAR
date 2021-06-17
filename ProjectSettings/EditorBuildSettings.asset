@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1.unity
     guid: 1d0f9c4c8db068a44971a0b666b039c2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/eto ung original na registration.unity
     guid: c71af7af890437f4c9432b1db5f4cd3e
   - enabled: 1
