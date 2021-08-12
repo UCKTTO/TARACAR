@@ -8,18 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:944323572407:android:e764cf91c858bf6b681332",
+        "mobilesdk_app_id": "1:944323572407:android:31a357900e773602681332",
         "android_client_info": {
-          "package_name": "com.taracarCompany.TaraCar"
+          "package_name": "ph.edu.ucbcf.apps.kttotaracar"
         }
       },
       "oauth_client": [
         {
-          "client_id": "944323572407-584o8ogpc7bfuce811jp4br7j7dbh9sq.apps.googleusercontent.com",
+          "client_id": "944323572407-igbsct7kou6dc0altkc90ehb5jpa1e7l.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.taracarCompany.TaraCar",
-            "certificate_hash": "4b66358003df715304657f6070d6049e94bf7922"
+            "package_name": "ph.edu.ucbcf.apps.kttotaracar",
+            "certificate_hash": "9841482413f687ed97d6bdea462a9f6c7476736e"
           }
         },
         {

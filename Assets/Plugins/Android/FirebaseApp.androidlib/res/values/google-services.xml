@@ -6,7 +6,7 @@
   <string name="project_id" translatable="false">taracar-7b824</string>
   <string name="google_api_key" translatable="false">AIzaSyAn_zzUGCqpydLWCwi0jEAuaWMbpcR5Kxs</string>
   <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAn_zzUGCqpydLWCwi0jEAuaWMbpcR5Kxs</string>
-  <string name="google_app_id" translatable="false">1:944323572407:android:e764cf91c858bf6b681332</string>
-  <string name="default_android_client_id" translatable="false">944323572407-584o8ogpc7bfuce811jp4br7j7dbh9sq.apps.googleusercontent.com</string>
+  <string name="google_app_id" translatable="false">1:944323572407:android:31a357900e773602681332</string>
+  <string name="default_android_client_id" translatable="false">944323572407-igbsct7kou6dc0altkc90ehb5jpa1e7l.apps.googleusercontent.com</string>
   <string name="default_web_client_id" translatable="false">944323572407-uc2e4fvle8cednjii6bn5av06bttihe0.apps.googleusercontent.com</string>
 </resources>
